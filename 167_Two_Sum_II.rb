@@ -14,3 +14,19 @@ def two_sum(numbers, target)
     end
   end
 end
+
+# use left & right pointers
+def two_sum2(numbers, target)
+  l = 0
+  r = numbers.length - 1
+
+  numbers.each_with_index do |num|
+    if (numbers[l] + numbers[r]) > target
+      r -= 1
+    elsif (numbers[l] + numbers[r]) < target
+      l += 1
+    else
+      break [l + 1, r + 1]
+    end
+  end
+end

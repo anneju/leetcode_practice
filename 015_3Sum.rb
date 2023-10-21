@@ -25,4 +25,29 @@ def three_sum(nums)
   results.uniq
 end
 
+# use left & right pointers
+def three_sum2(nums)
+  nums.sort!
+  results = []
+
+  nums[0..(nums.length - 3)].each_with_index do |num, index|
+    target = -num
+    l = index + 1
+    r = nums.length - 1
+
+    while l < r do
+      if (nums[l] + nums[r]) > target
+        r -= 1
+      elsif (nums[l] + nums[r]) < target
+        l += 1
+      else
+        results.push([nums[index], nums[l], nums[r]])
+        l += 1
+      end
+    end
+  end
+
+  results.uniq
+end
+
 three_sum([-1,0,1,2,-1,-4])
