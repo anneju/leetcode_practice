@@ -5,19 +5,15 @@
 # @return {Integer}
 
 def max_profit(prices)
-  last_index = prices.length - 1
-  return 0 if last_index == 0
-  max_profit = 0
+  profit = 0
+  min = prices[0]
 
-  prices.each_with_index do |price, index|
-    right = index + 1
-    while right <= last_index
-      max_profit = [max_profit, prices[right] - price].max if prices[right] > price
-      right += 1
-    end
+  prices.each do |price|
+    min = [min, price].min
+    profit = [profit, price - min].max
   end
 
-  max_profit
+  profit
 end
 
 max_profit([7,1,5,3,6,4])

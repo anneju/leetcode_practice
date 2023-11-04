@@ -24,3 +24,26 @@ def search_matrix(matrix, target)
 
   false
 end
+
+# solution YT: https://www.youtube.com/watch?v=V6Z3FTGhGwk
+def search_matrix(matrix, target)
+  rows = matrix.length - 1
+  columns = matrix[0].length - 1
+
+  # start from right top
+  row = 0
+  column = columns
+
+  while (0 <= row) && (row <= rows) && (0 <= column) && (column <= columns)
+    current = matrix[row][column]
+    if target < current
+      column -= 1
+    elsif target > current
+      row += 1
+    else
+      return true
+    end
+  end
+
+  false
+end

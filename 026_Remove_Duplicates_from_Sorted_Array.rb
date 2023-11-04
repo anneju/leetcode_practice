@@ -4,12 +4,13 @@
 # @param {Integer[]} nums
 # @return {Integer}
 def remove_duplicates(nums)
-  return nums.length if nums.length <= 1
+  return 1 if nums.length == 1
 
+  last_index = nums.length - 1
   left = 0
   right = 0
 
-  while right < nums.length
+  while right <= last_index
     if nums[left] != nums[right]
       left += 1
       nums[left] = nums[right]
