@@ -27,3 +27,8 @@ def search(nums, target)
   return high if nums[high] == target
   return -1
 end
+
+def search(nums, target)
+  index = nums.find_index(target)
+  index ? index : -1
+end
