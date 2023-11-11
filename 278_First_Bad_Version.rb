@@ -8,19 +8,19 @@
 # @param {Integer} n
 # @return {Integer}
 def first_bad_version(n)
-  return 1 if n == 1
+  return n if n == 1
 
-  b_search(0, n)
+  b_search(1, n)
 end
 
 def b_search(left, right)
-  while left + 1 < right # at least three elements
-    mid = left + (right - left) / 2
-
+  while left < right
+    mid = (left + right) / 2
+    mid = mid.floor # 確保是整數
     if is_bad_version(mid)
       right = mid
     else
-      left = mid
+      left = mid + 1
     end
   end
 
